@@ -32,8 +32,8 @@ public class PauseMenu : MonoBehaviour
 
     public void UpdateVolume()
     {
-        FMODManager.Instance.SetVCAVolume("Music", Mathf.Log10(musicSlider.value) * 20);
-        FMODManager.Instance.SetVCAVolume("SFX", Mathf.Log10(sfxSlider.value) * 20);
+        FMODManager.Instance.SetVCAVolume("Music", musicSlider.value);
+        FMODManager.Instance.SetVCAVolume("SFX", sfxSlider.value);
 
         PlayerPrefs.SetFloat("Music", musicSlider.value);
         PlayerPrefs.SetFloat("SFX", sfxSlider.value);

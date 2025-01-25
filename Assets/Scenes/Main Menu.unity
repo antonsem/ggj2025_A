@@ -1714,21 +1714,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 858150213}
     m_Modifications:
-    - target: {fileID: 83284371880603618, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2253786595451273544, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
       propertyPath: m_Name
       value: SettingsPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2253786595451273544, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4190181188934066621, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4654576766149999348, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
       propertyPath: m_Pivot.x
@@ -1809,18 +1797,6 @@ PrefabInstance:
     - target: {fileID: 4654576766149999348, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423587534221943727, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8220819272827001772, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 973947693}
-    - target: {fileID: 8401079235240098845, guid: 11d133e223ab6764c8ea1c36414c62a6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
