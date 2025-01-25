@@ -1,33 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8b0be688f884f42a56f3ba3787d6d56, type: 3}
-  m_Name: WebGL
-  m_EditorClassIdentifier: 
-  buildName: ggj2025_A
-  directory: Build
-  buildGroup: 13
-  buildTarget: 20
-  scenes:
-  - {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
-  batchFile: {fileID: 102900000, guid: bd7d00df9d93494489cdef7d119ba779, type: 3}
-  batchArguments:
-  - '%zipFile'
-  - antonsem
-  - ggj2025-a
-  - webgl
-  createZipFile: 1
-  useBatchFile: 1
-  keepCurrentBuildTarget: 1
-  automaticallySaveReport: 0
-  zipFile: FullPath/ExampleBuild.zip
-  buildDirectory: 
-  report: 
+version https://git-lfs.github.com/spec/v1
+oid sha256:215a217a9ccf32f908748015781767d5d4a26b6a675baee3a2221c48bf00667c
+size 1756
