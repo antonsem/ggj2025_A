@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool _shoot;
         public bool jetpackShake;
         public bool jetpackRelease;
+		public bool gameIsPaused = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -68,6 +69,12 @@ namespace StarterAssets
         {
             JetpackReleaseInput(value.isPressed);
         }
+
+		public void OnPause(InputValue value)
+		{
+			PauseGame(value.isPressed);
+		}
+
 #endif
 
 
@@ -96,6 +103,11 @@ namespace StarterAssets
         {
             jetpackRelease = newState;
         }
+
+		public void PauseGame(bool newState)
+		{
+			gameIsPaused = true;
+		}
 
 
         public void SprintInput(bool newSprintState)
