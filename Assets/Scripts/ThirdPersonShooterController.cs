@@ -81,6 +81,13 @@ public class ThirdPersonShooterController : MonoBehaviour
 			mainBubble.gameObject.SetActive(true);
 			//_starterAssetsInputs._shoot = false;
 			_timeSinceLastProjectile = 0;
+
+			FMODManager.Instance.SetGlobalParameterValue("IsShooting", 1);
+			FMODManager.Instance.PlaySound("event:/SFX_Shooting");
+		}
+		else if(!_starterAssetsInputs._shoot)
+		{
+			FMODManager.Instance.SetGlobalParameterValue("IsShooting", 0);
 		}
 	}
 

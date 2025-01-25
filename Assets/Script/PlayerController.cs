@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     private StarterAssetsInputs _input;
     private ThirdPersonController _thirdPersonController;
+    private bool _startedShaking;
 
     private void Start()
     {
@@ -76,6 +77,15 @@ public class PlayerController : MonoBehaviour
         _isBubbling = true;
         _lastShakeTime = Time.time;
 
+
+        if(!_startedShaking)
+        {
+            FMODManager.Instance.SetGlobalParameterValue("IsShaking", 1);
+            FMODManager.Instance.SetGlobalParameterValue("IsPop", 0);
+            FMODManager.Instance.PlaySound("event:/SFX_Jetpack");
+            _startedShaking = true;
+        }
+
         Debug.Log($"Shaking - current bubbles: {_currentBubbles}");
     }
 
@@ -90,5 +100,8 @@ public class PlayerController : MonoBehaviour
 
         _currentBubbles = 0f;
         _isBubbling = false;
+        
+        FMODManager.Instance.SetGlobalParameterValue("IsPop", 1);
+        _startedShaking = false;
     }
 }
