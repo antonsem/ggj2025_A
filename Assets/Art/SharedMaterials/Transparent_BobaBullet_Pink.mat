@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transparent_BobaBullet
+  m_Name: Transparent_BobaBullet_Pink
   m_Shader: {fileID: -6465566751694194690, guid: 777a31d4bbefef748a64039a1c8c95b8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -120,8 +120,8 @@ Material:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
-    - _Frensel_Power: 2.8
-    - _Frensel_Power_1: 0.2
+    - _Frensel_Power: 2.3
+    - _Frensel_Power_1: 0.4
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -144,10 +144,10 @@ Material:
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 0.49305534, g: 0, b: 1, a: 1}
+    - _BaseColor: {r: 1, g: 0.28616333, b: 0.7239936, a: 1}
     - _Color: {r: 0.6716419, g: 0.6179245, b: 1, a: 0.6392157}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Frensel_Color: {r: 0.77672946, g: 0.96585274, b: 1, a: 0}
+    - _Frensel_Color: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling_Higlight: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
