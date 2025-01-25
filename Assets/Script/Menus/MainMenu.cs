@@ -46,6 +46,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame1P()
     {
+        FMODManager.Instance.PlaySound("event:/MX_MainTheme");
         SceneManager.LoadSceneAsync(1);
     }
 

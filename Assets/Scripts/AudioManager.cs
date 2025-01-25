@@ -6,7 +6,6 @@ public class AudioManager : MonoBehaviour
 {
     private void Start()
     {
-        FMODManager.Instance.PlaySound("event:/MX_MainTheme");
         InputManager.Instance.OnSchizoPressed += OnSchizo;
     }
 
