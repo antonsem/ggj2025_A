@@ -74,7 +74,7 @@ namespace StarterAssets
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
-        
+
         // cinemachine
         private float _cinemachineTargetYaw;
         private float _cinemachineTargetPitch;
@@ -109,7 +109,7 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
-
+		
         public float Sensitivity { set; private get; }
         public bool RotateOnMove { set; private get; } = true;
 
@@ -200,7 +200,7 @@ namespace StarterAssets
             {
                 //Don't multiply mouse input by Time.deltaTime;
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
-
+				
                 _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier * Sensitivity;
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier * Sensitivity;
             }
@@ -393,6 +393,11 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        public void SetVerticalVelocity(float newVelocity)
+        {
+            _verticalVelocity = newVelocity;
         }
     }
 }

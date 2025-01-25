@@ -12,17 +12,19 @@ public class BubbleProjectile : MonoBehaviour
     private Rigidbody _bubbleProjectile;
 	private float _elapsedTime;
 	private BubblesPool _bubblesPool;
+	private Vector3 _originalScale;
 
     private void Awake()
     {
         _bubbleProjectile = GetComponent<Rigidbody>();
 		_bubblesPool = GetComponentInParent<BubblesPool>();
-    }
+		_originalScale = transform.localScale;
+	}
 
 	private void OnEnable()
 	{
 		_bubbleProjectile.linearVelocity = transform.forward * _speed;
-		transform.localScale *= Random.Range(_minScale, 1f);
+		transform.localScale = _originalScale * Random.Range(_minScale, 1f);
 		_elapsedTime = 0;
 	}
 

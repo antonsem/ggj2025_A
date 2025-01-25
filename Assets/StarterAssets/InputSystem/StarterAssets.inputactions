@@ -27,7 +27,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -42,9 +42,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "JetpackShake",
+                    "type": "Button",
+                    "id": "150e27a6-9ace-41f5-a2a5-26fd39ff7816",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JetpackRelease",
+                    "type": "Button",
+                    "id": "221c3984-d2cb-4c62-a99a-54cc3e49a97c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Aim",
                     "type": "PassThrough",
-                    "id": "a4647716-4913-4f85-ab6c-d4012a71d0e5",
+                    "id": "4b8a60af-a903-4c6f-9484-ddb515af2b46",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -53,7 +71,7 @@
                 {
                     "name": "Shoot",
                     "type": "PassThrough",
-                    "id": "2a83a120-98ab-4d17-82be-bfd386a073b5",
+                    "id": "e755ed32-0bfe-4cb7-bba3-203c37ee794a",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -196,7 +214,7 @@
                 {
                     "name": "",
                     "id": "1bd55a0b-761e-4ae4-89ae-8ec127e08a29",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
@@ -239,7 +257,29 @@
                 },
                 {
                     "name": "",
-                    "id": "c41e200f-91bb-4a49-bf2f-7765407c4aa9",
+                    "id": "a0ec4fd6-9afd-465f-a718-6d8ec6c79b9a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "JetpackShake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5bde293-c26c-4358-895b-21c5d21e7317",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "JetpackRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc331ef0-7c70-4be3-a94a-4261d6f5e00f",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -250,7 +290,7 @@
                 },
                 {
                     "name": "",
-                    "id": "02d48d99-c6ec-4a7f-8cd7-e816ab41bd2f",
+                    "id": "361ff56d-0cbd-42ee-930a-f8fc5c0e5930",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",

@@ -14,6 +14,8 @@ namespace StarterAssets
 		public bool sprint;
 		public bool _aim;
 		public bool _shoot;
+        public bool jetpackShake;
+        public bool jetpackRelease;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -56,6 +58,16 @@ namespace StarterAssets
 			ShootInput(value.isPressed);
 		}
 		
+        // Bubble Pack
+        public void OnJetpackShake(InputValue value)
+        {
+            JetpackShakeInput(value.isPressed);
+        }
+
+        public void OnJetpackRelease(InputValue value)
+        {
+            JetpackReleaseInput(value.isPressed);
+        }
 #endif
 
 
@@ -74,7 +86,19 @@ namespace StarterAssets
 			jump = newJumpState;
 		}
 
-		public void SprintInput(bool newSprintState)
+		// Bubble Pack
+        public void JetpackShakeInput(bool newState)
+        {
+            jetpackShake = newState;
+        }
+
+        public void JetpackReleaseInput(bool newState)
+        {
+            jetpackRelease = newState;
+        }
+
+
+        public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
 		}
