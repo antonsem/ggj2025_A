@@ -19,15 +19,18 @@ public class ThirdPersonShooterController : MonoBehaviour
 	[SerializeField] private float _spreadAngle = 0.5f;
 	[SerializeField] private float _timeBetweenProjectiles = 0.5f;
 	[SerializeField] private BubblesPool _bubblesPool;
+	[SerializeField] private bool _isPlayerOne;
 
 	private StarterAssetsInputs _starterAssetsInputs;
 	private ThirdPersonController _thirdPersonController;
 	private float _timeSinceLastProjectile;
+	private Camera _camera;
 
-	private void Awake()
+	private void Start()
 	{
-		_starterAssetsInputs = GetComponent<StarterAssetsInputs>();
+		_starterAssetsInputs = InputManager.Instance.StarterAssetsInputs;
 		_thirdPersonController = GetComponent<ThirdPersonController>();
+		_camera = GameObject.FindGameObjectWithTag(_isPlayerOne ? "MainCamera" : "MainCameraP2").GetComponent<Camera>();
 	}
 
 	private void Update()
@@ -35,7 +38,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 		Vector3 mouseWorldPosition = Vector3.zero;
 		
 		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
-		Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+		Ray ray = _camera.ScreenPointToRay(screenCenterPoint);
 		//ray.direction = Camera.main.transform.forward;
 		if(Physics.Raycast(ray, out RaycastHit raycastHit, 999f, _aimColliderLayerMask))
 		{
@@ -66,7 +69,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 		_timeSinceLastProjectile += Time.deltaTime;
 		if(_starterAssetsInputs._shoot && _timeSinceLastProjectile > _timeBetweenProjectiles)
 		{
-			Vector3 aimDirection = mouseWorldPosition == Vector3.zero ? (Camera.main.transform.forward * _projectileForwardDistance - _spawnBubblePosition.position).normalized  : (mouseWorldPosition - _spawnBubblePosition.position).normalized;
+			Vector3 aimDirection = mouseWorldPosition == Vector3.zero ? (_camera.transform.forward * _projectileForwardDistance - _spawnBubblePosition.position).normalized  : (mouseWorldPosition - _spawnBubblePosition.position).normalized;
 			Quaternion mainRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
 			
 			for(int i = 0; i < _additionalBubbles; i++)

@@ -9,9 +9,6 @@ using UnityEngine.InputSystem;
 namespace StarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
-    [RequireComponent(typeof(PlayerInput))]
-#endif
     public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
@@ -76,6 +73,7 @@ namespace StarterAssets
         public bool LockCameraPosition = false;
 
         [SerializeField] private Animator _animator;
+        [SerializeField] private bool _isPlayerOne;
         
         // cinemachine
         private float _cinemachineTargetYaw;
@@ -128,9 +126,9 @@ namespace StarterAssets
         private void Awake()
         {
             // get a reference to our main camera
-            if (_mainCamera == null)
+            if(_mainCamera == null)
             {
-                _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+                _mainCamera = GameObject.FindGameObjectWithTag(_isPlayerOne ? "MainCamera" : "MainCameraP2");
             }
         }
 
@@ -139,9 +137,9 @@ namespace StarterAssets
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _controller = GetComponent<CharacterController>();
-            _input = GetComponent<StarterAssetsInputs>();
+            _input = InputManager.Instance.StarterAssetsInputs;
 #if ENABLE_INPUT_SYSTEM 
-            _playerInput = GetComponent<PlayerInput>();
+            _playerInput = InputManager.Instance.PlayerInput;
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif

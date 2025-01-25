@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settings;
-    [SerializeField] private StarterAssetsInputs input;
 
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider musicSlider;
@@ -23,7 +22,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (input.gameIsPaused && !_gameIsPaused)
+        if (InputManager.Instance.StarterAssetsInputs.gameIsPaused && !_gameIsPaused)
         {
             _gameIsPaused = true;
             PauseGame();
@@ -60,7 +59,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        input.gameIsPaused = false;
+        InputManager.Instance.StarterAssetsInputs.gameIsPaused = false;
 
         pauseMenu.gameObject.SetActive(false);
         _gameIsPaused = false;

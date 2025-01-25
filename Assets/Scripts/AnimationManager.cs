@@ -5,10 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimationManager : MonoBehaviour
 {
-    public static AnimationManager Instance { get; private set; }
-
-    [SerializeField] private StarterAssetsInputs _starterAssetsInputs;
-    
+    private StarterAssetsInputs _starterAssetsInputs;
     private Animator _animator;
     private bool _isShooting;
     
@@ -17,15 +14,12 @@ public class AnimationManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance != null)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Instance = this;
-
         _animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        _starterAssetsInputs = InputManager.Instance.StarterAssetsInputs;
     }
 
     private void Update()

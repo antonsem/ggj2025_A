@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _input = GetComponent<StarterAssetsInputs>();
+        _input = InputManager.Instance.StarterAssetsInputs;
         _controller = GetComponent<CharacterController>();
         _thirdPersonController = GetComponent<ThirdPersonController>();
     }
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (_input.jetpackRelease)
         {
-            _input.jetpackRelease = false;
+            _input.jetpackRelease = false; //TODO: Right now only player one jumps, we need to split the input in 2
 
             ReleaseBubbles();
         }
