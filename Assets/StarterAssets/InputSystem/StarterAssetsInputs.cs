@@ -5,13 +5,18 @@ using UnityEngine.InputSystem;
 
 namespace StarterAssets
 {
+
 	public class StarterAssetsInputs : MonoBehaviour
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
-		public bool sprint;
+
+        public bool jetpackShake;
+        public bool jetpackRelease;
+
+        public bool sprint;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -39,7 +44,18 @@ namespace StarterAssets
 			JumpInput(value.isPressed);
 		}
 
-		public void OnSprint(InputValue value)
+        // Bubble Pack
+        public void OnJetpackShake(InputValue value)
+        {
+            JetpackShakeInput(value.isPressed);
+        }
+
+        public void OnJetpackRelease(InputValue value)
+        {
+            JetpackReleaseInput(value.isPressed);
+        }
+
+        public void OnSprint(InputValue value)
 		{
 			SprintInput(value.isPressed);
 		}
@@ -61,7 +77,19 @@ namespace StarterAssets
 			jump = newJumpState;
 		}
 
-		public void SprintInput(bool newSprintState)
+		// Bubble Pack
+        public void JetpackShakeInput(bool newState)
+        {
+            jetpackShake = newState;
+        }
+
+        public void JetpackReleaseInput(bool newState)
+        {
+            jetpackRelease = newState;
+        }
+
+
+        public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
 		}
