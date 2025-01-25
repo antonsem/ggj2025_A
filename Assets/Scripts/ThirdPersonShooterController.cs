@@ -1,8 +1,10 @@
 using StarterAssets;
 using System;
 using Unity.Cinemachine;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class ThirdPersonShooterController : MonoBehaviour
 {
@@ -11,12 +13,16 @@ public class ThirdPersonShooterController : MonoBehaviour
 	[SerializeField] private float _aimSensitivity = 0.5f;
 	[SerializeField] private LayerMask _aimColliderLayerMask = new();
 	[SerializeField] private Transform _pointer;
-	[SerializeField] private Transform _bubbleProjectile;
 	[SerializeField] private Transform _spawnBubblePosition;
-	
+	[SerializeField] private float _projectileForwardDistance = 100f;
+	[SerializeField] private int _additionalBubbles = 9;
+	[SerializeField] private float _spreadAngle = 0.5f;
+	[SerializeField] private float _timeBetweenProjectiles = 0.5f;
+	[SerializeField] private BubblesPool _bubblesPool;
 
 	private StarterAssetsInputs _starterAssetsInputs;
 	private ThirdPersonController _thirdPersonController;
+	private float _timeSinceLastProjectile;
 
 	private void Awake()
 	{
@@ -57,11 +63,30 @@ public class ThirdPersonShooterController : MonoBehaviour
 			_thirdPersonController.RotateOnMove = true;
 		}
 
-		if(_starterAssetsInputs._shoot)
+		_timeSinceLastProjectile += Time.deltaTime;
+		if(_starterAssetsInputs._shoot && _timeSinceLastProjectile > _timeBetweenProjectiles)
 		{
-			Vector3 aimDirection = (mouseWorldPosition - _spawnBubblePosition.position).normalized;
-			Instantiate(_bubbleProjectile, _spawnBubblePosition, Quaternion.LookRotation(aimDirection, Vector3.up));
-			_starterAssetsInputs._shoot = false;
+			Vector3 aimDirection = mouseWorldPosition == Vector3.zero ? (Camera.main.transform.forward * _projectileForwardDistance - _spawnBubblePosition.position).normalized  : (mouseWorldPosition - _spawnBubblePosition.position).normalized;
+			Quaternion mainRotation = Quaternion.LookRotation(aimDirection, Vector3.up);
+			
+			for(int i = 0; i < _additionalBubbles; i++)
+			{
+				Transform bubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation);
+				//bubble.transform.rotation = bubble.transform.rotation * Quaternion.AngleAxis((_spreadAngle / 2f) - ((i / (_additionalBubbles / 2f)) * (_spreadAngle / 2f)), Vector3.up);
+				bubble.transform.forward = PickFiringDirection(bubble.transform.forward, _spreadAngle);
+				bubble.gameObject.SetActive(true);
+			}
+
+			Transform mainBubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation);
+			mainBubble.gameObject.SetActive(true);
+			//_starterAssetsInputs._shoot = false;
+			_timeSinceLastProjectile = 0;
 		}
+	}
+
+	Vector3 PickFiringDirection(Vector3 muzzleForward, float spreadRadius)
+	{
+		Vector3 candidate = Random.insideUnitSphere * spreadRadius + muzzleForward;
+		return candidate.normalized;
 	}
 }
