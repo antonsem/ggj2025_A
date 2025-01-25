@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -23,4 +24,17 @@ public class FMODManager
 	{
 		RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
 	}
+
+    public void SetVCAVolume(string vcaName, float volume)
+    {
+        VCA vca = RuntimeManager.GetVCA("vca:/" + vcaName);
+        vca.setVolume(volume);
+    }
+
+    public float GetVCAVolume(string vcaName)
+    {
+        VCA vca = RuntimeManager.GetVCA("vca:/" + vcaName);
+        vca.getVolume(out float volume);
+		return volume;
+    }
 }
