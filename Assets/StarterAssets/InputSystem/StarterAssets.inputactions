@@ -319,17 +319,6 @@
                 },
                 {
                     "name": "",
-                    "id": "24404050-b107-4c00-88c5-6430a6ddf79c",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5cc6a02b-d553-4eed-bd05-4bf7d7e1b2ef",
                     "path": "<Keyboard>/p",
                     "interactions": "",
