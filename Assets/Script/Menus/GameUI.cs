@@ -4,42 +4,70 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private GameObject[] iconPrefab;
+    public enum PlayerType { PlayerOne, PlayerTwo };
+
+    [Header("UI Panels")]
+    [SerializeField] private GameObject UIPanel;
+
+    [Header("Friend Counter")]
     [SerializeField] private GameObject[] iconContainer;
     [SerializeField] private TMP_Text friendCountText;
 
-    [SerializeField] private GameObject player;
+    [Header("Bubble Bar")]
+    [SerializeField] private Slider bubbleSlider;
 
-    [SerializeField] private int _friendCount = 10;
+    [Header("Player Selection")]
+    [SerializeField] private PlayerType playerType;
+
+    private void Start()
+    {
+        if (playerType == PlayerType.PlayerOne)
+        {
+            UIPanel.SetActive(true);
+        }
+        else if (playerType == PlayerType.PlayerTwo && GameModeManager.Instance.gameMode == GameModeManager.GameMode.MultiPlayer)
+        {
+            UIPanel.SetActive(true);
+        }
+        else
+        {
+            UIPanel.SetActive(false);
+        }
+    }
+
+    private void Awake()
+    {
+        bubbleSlider.value = 0;
+    }
 
     private void Update()
     {
-        UpdateBubbleCounter();
-
+        // TODO: Move this to game logic where friend is captured
         UpdateFriendCount();
-        UpdateIconContainer();
-
-
     }
 
-    private void UpdateBubbleCounter()
+    public void UpdateBubbleCounter(float bubbleValue)
     {
-        // Get Bubble Counter from player controller
+        bubbleSlider.value = bubbleValue;
     }
 
     private void UpdateFriendCount()
     {
-        // friendCount = player.friends;
+        friendCountText.text = GameData.Instance.PlayerOneFriends.ToString();
+        UpdateIconContainer(iconContainer, GameData.Instance.PlayerOneFriends);
 
-        friendCountText.text = _friendCount.ToString();
+        if (playerType == PlayerType.PlayerTwo && GameModeManager.Instance.gameMode == GameModeManager.GameMode.MultiPlayer)
+        {
+            friendCountText.text = GameData.Instance.PlayerTwoFriends.ToString();
+            UpdateIconContainer(iconContainer, GameData.Instance.PlayerTwoFriends);
+        }
     }
 
-    private void UpdateIconContainer()
+    private void UpdateIconContainer(GameObject[] iconContainer, int friendCount)
     {
-
         for (int i = 0; i < iconContainer.Length; i++)
         {
-            if (i < _friendCount)
+            if (i < friendCount)
             {
                 iconContainer[i].GetComponent<Image>().enabled = true;
             }

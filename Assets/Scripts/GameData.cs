@@ -7,20 +7,22 @@ public class GameData
     {
         get
         {
-            Instance ??= new GameData();
-            return Instance;
+            _instance ??= new GameData();
+            return _instance;
         }
         private set
         {
         }
     }
 
+    private static GameData _instance;
+
     public const int TotalFriends = 20; //TODO: Adjust the amount based on scene
 
     public event Action<PlayerType> OnGameWon;
-    
-    public int PlayerOneFriends { get; private set; }
-    public int PlayerTwoFriends { get; private set; }
+
+    public int PlayerOneFriends { get; private set; } = 10;
+    public int PlayerTwoFriends { get; private set; } = 5;
 
     public void UpdateScore(PlayerType playerType, int difference)
     {
