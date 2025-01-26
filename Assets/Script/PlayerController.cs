@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         _input = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
         _controller = GetComponent<CharacterController>();
         _thirdPersonController = GetComponent<ThirdPersonController>();
+        gameUI.UpdateBubbleCounter(0);
     }
 
     private void Update()

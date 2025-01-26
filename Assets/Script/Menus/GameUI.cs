@@ -34,12 +34,8 @@ public class GameUI : MonoBehaviour
             UIPanel.SetActive(false);
         }
 
+        UpdateFriendCount(playerType, 0);
         GameData.Instance.OnScoreUpdated += UpdateFriendCount;
-    }
-
-    private void Awake()
-    {
-
     }
 
     public void UpdateBubbleCounter(float bubbleValue)

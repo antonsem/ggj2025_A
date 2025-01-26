@@ -22,8 +22,8 @@ public class GameData
     public event Action<PlayerType> OnGameWon;
     public event Action<PlayerType, int> OnScoreUpdated;
 
-    public HashSet<GameObject> PlayerOneFriends { get; private set; }
-    public HashSet<GameObject> PlayerTwoFriends { get; private set; }
+    public HashSet<GameObject> PlayerOneFriends { get; } = new();
+    public HashSet<GameObject> PlayerTwoFriends { get; } = new();
 
     public void AssignFriend(GameObject friend, PlayerType playerType)
     {
@@ -33,17 +33,23 @@ public class GameData
                 if(PlayerOneFriends.Add(friend))
                 {
                     friend.GetComponentInChildren<SkinnedMeshRenderer>().material.SetTextureOffset(_baseMap, new Vector2(0.66f,0));
+                    OnScoreUpdated?.Invoke(playerType, PlayerOneFriends.Count);
                 }
-                PlayerTwoFriends.Remove(friend);
-                OnScoreUpdated?.Invoke(playerType, PlayerOneFriends.Count);
+                if(PlayerTwoFriends.Remove(friend))
+                {
+                    OnScoreUpdated?.Invoke(PlayerType.PlayerTwo, PlayerTwoFriends.Count);
+                }
                 break;
             case PlayerType.PlayerTwo:
                 if(PlayerTwoFriends.Add(friend))
                 {
                     friend.GetComponentInChildren<SkinnedMeshRenderer>().material.SetTextureOffset(_baseMap, new Vector2(0.33f, 0));
+                    OnScoreUpdated?.Invoke(playerType, PlayerTwoFriends.Count);
                 }
-                PlayerOneFriends.Remove(friend);
-                OnScoreUpdated?.Invoke(playerType, PlayerTwoFriends.Count);
+                if(PlayerOneFriends.Remove(friend))
+                {
+                    OnScoreUpdated?.Invoke(PlayerType.PlayerOne, PlayerOneFriends.Count);
+                }
                 break;
         }
 

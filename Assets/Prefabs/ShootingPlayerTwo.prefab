@@ -1156,7 +1156,7 @@ PrefabInstance:
       objectReference: {fileID: 972154692300438920}
     - target: {fileID: 1994108987413897629, guid: 0b6b7c82e019ba5409b78b904c059a95, type: 3}
       propertyPath: playerType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1994108987413897629, guid: 0b6b7c82e019ba5409b78b904c059a95, type: 3}
       propertyPath: bubbleSlider
