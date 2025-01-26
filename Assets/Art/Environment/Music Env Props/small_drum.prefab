@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 311147776325591670}
   - component: {fileID: 5508869124502964171}
   - component: {fileID: 2241013511316153837}
-  - component: {fileID: 1263131404524991797}
-  - component: {fileID: 4467187967143944022}
+  - component: {fileID: 6222996634667341081}
   m_Layer: 0
   m_Name: small_drum
   m_TagString: Untagged
@@ -88,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1263131404524991797
-CapsuleCollider:
+--- !u!64 &6222996634667341081
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,31 +105,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.25
-  m_Height: 2.31
-  m_Direction: 1
-  m_Center: {x: 0.0000008940697, y: 0.00083345495, z: 0.21}
---- !u!136 &4467187967143944022
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8662534651399271182}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.48
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.0000008940697, y: 0.00083345495, z: 5.15}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1682844091871324262, guid: 3cbc91f33a5a5bd4c8b092ec6be26a9d, type: 3}
