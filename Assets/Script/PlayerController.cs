@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxTimeHoldingBubblesSeconds = 2f;
     [SerializeField] public float bubbleDecayOvertime = 0.01f;
     [SerializeField] public float releaseForceMultiplier = 10f;
+    
+    [SerializeField] private bool _isPlayerOne;
 
     // Current bubble count
     private float _currentBubbles = 0f;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        _input = InputManager.Instance.StarterAssetsInputs;
+        _input = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
         _controller = GetComponent<CharacterController>();
         _thirdPersonController = GetComponent<ThirdPersonController>();
     }

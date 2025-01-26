@@ -22,12 +22,15 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.Instance.StarterAssetsInputs.gameIsPaused && !_gameIsPaused)
+        if (AnyPlayerPaused() && !_gameIsPaused)
         {
             _gameIsPaused = true;
             PauseGame();
         }
     }
+    
+    private bool AnyPlayerPaused() => InputManager.Instance.StarterAssetsInputsPlayerOne.gameIsPaused ||
+        InputManager.Instance.StarterAssetsInputsPlayerTwo.gameIsPaused;
 
     public void UpdateVolume()
     {
@@ -59,7 +62,8 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        InputManager.Instance.StarterAssetsInputs.gameIsPaused = false;
+        InputManager.Instance.StarterAssetsInputsPlayerOne.gameIsPaused = false;
+        InputManager.Instance.StarterAssetsInputsPlayerTwo.gameIsPaused = false;
 
         pauseMenu.gameObject.SetActive(false);
         _gameIsPaused = false;

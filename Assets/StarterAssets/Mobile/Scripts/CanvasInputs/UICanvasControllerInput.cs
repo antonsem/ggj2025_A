@@ -5,11 +5,13 @@ namespace StarterAssets
 {
     public class UICanvasControllerInput : MonoBehaviour
     {
+        [SerializeField] private bool _isPlayerOne;
+        
         private StarterAssetsInputs starterAssetsInputs;
 
         private void Start()
         {
-            starterAssetsInputs = InputManager.Instance.StarterAssetsInputs;
+            starterAssetsInputs = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
         }
 
         public void VirtualMoveInput(Vector2 virtualMoveDirection)

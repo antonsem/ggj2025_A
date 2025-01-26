@@ -804,6 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee07d5a89137854d89bc021479471a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isPlayerOne: 0
 --- !u!4 &7476288534693984499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2461697148246564419, guid: 09a0cad1f45df0f48a63c5e246b7eeca, type: 3}

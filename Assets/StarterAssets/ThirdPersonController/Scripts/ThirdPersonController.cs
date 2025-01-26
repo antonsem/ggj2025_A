@@ -137,9 +137,9 @@ namespace StarterAssets
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
             _controller = GetComponent<CharacterController>();
-            _input = InputManager.Instance.StarterAssetsInputs;
+            _input = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
 #if ENABLE_INPUT_SYSTEM 
-            _playerInput = InputManager.Instance.PlayerInput;
+            _playerInput = _isPlayerOne ? InputManager.Instance.PlayerInputPlayerOne : InputManager.Instance.PlayerInputPlayerTwo;
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif

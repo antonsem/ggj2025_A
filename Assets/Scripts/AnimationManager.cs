@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class AnimationManager : MonoBehaviour
 {
+    [SerializeField] private bool _isPlayerOne;
+    
     private StarterAssetsInputs _starterAssetsInputs;
     private Animator _animator;
     private bool _isShooting;
@@ -19,7 +21,7 @@ public class AnimationManager : MonoBehaviour
 
     private void Start()
     {
-        _starterAssetsInputs = InputManager.Instance.StarterAssetsInputs;
+        _starterAssetsInputs = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
     }
 
     private void Update()

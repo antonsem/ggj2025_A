@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: _isPlayerOne
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2468688908623080549, guid: 59740ff9bfd745447bb846c7f741db00, type: 3}
+      propertyPath: _isPlayerOne
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8191005661895196699, guid: 59740ff9bfd745447bb846c7f741db00, type: 3}
       propertyPath: m_Controller
       value: 
@@ -407,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee07d5a89137854d89bc021479471a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isPlayerOne: 1
 --- !u!4 &2647770447629653809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409212984007796927, guid: 59740ff9bfd745447bb846c7f741db00, type: 3}

@@ -46,7 +46,7 @@ namespace StarterAssets
 
 		public void OnSprint(InputValue value)
 		{
-			SprintInput(value.isPressed);
+			SprintInput(!sprint);
 		}
 
 		public void OnAim(InputValue value)

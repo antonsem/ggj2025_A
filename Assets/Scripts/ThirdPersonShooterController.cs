@@ -28,7 +28,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 
 	private void Start()
 	{
-		_starterAssetsInputs = InputManager.Instance.StarterAssetsInputs;
+		_starterAssetsInputs = _isPlayerOne ? InputManager.Instance.StarterAssetsInputsPlayerOne : InputManager.Instance.StarterAssetsInputsPlayerTwo;
 		_thirdPersonController = GetComponent<ThirdPersonController>();
 		_camera = GameObject.FindGameObjectWithTag(_isPlayerOne ? "MainCamera" : "MainCameraP2").GetComponent<Camera>();
 	}
