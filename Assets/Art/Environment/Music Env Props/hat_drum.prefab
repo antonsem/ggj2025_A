@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9142107671336825569}
   - component: {fileID: 1207748104284413050}
   - component: {fileID: 3344923356069183646}
+  - component: {fileID: 3907588729289905483}
   m_Layer: 0
   m_Name: hat_drum
   m_TagString: Untagged
@@ -109,3 +110,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3135837210412359092, guid: 3cbc91f33a5a5bd4c8b092ec6be26a9d, type: 3}
+--- !u!114 &3907588729289905483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814559360077674766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e050a54493e084f87b7c7c965521e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instrument: 1

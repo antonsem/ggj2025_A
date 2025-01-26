@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5640219446762681406}
   - component: {fileID: 444012442776337637}
   - component: {fileID: 2962304321427194572}
+  - component: {fileID: 6947846237824110729}
   m_Layer: 0
   m_Name: drum_01
   m_TagString: Untagged
@@ -109,3 +110,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4772422707789536589, guid: 3cbc91f33a5a5bd4c8b092ec6be26a9d, type: 3}
+--- !u!114 &6947846237824110729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581754633668252107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5e050a54493e084f87b7c7c965521e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instrument: 2
