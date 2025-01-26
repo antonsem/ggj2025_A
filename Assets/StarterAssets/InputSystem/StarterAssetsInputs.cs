@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -101,7 +102,16 @@ namespace StarterAssets
 
         public void JetpackReleaseInput(bool newState)
         {
-            jetpackRelease = newState;
+			if(GameResources.Instance == null)
+			{
+				FMODManager.Instance.PlaySound("event:/MX_MainTheme");
+				GameModeManager.Instance.SetMultiplayer();
+				SceneManager.LoadSceneAsync(1);
+			}
+			else
+			{
+				jetpackRelease = newState;
+			}
         }
 
 		public void PauseGame(bool newState)
@@ -127,7 +137,10 @@ namespace StarterAssets
 
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+			if(hasFocus && GameResources.Instance != null)
+			{
+				SetCursorState(cursorLocked);
+			}
 		}
 
 		private void SetCursorState(bool newState)

@@ -150,38 +150,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 2942536036374306779, guid: dc970bc045a563248889eee57a8dc810, type: 3}
+      propertyPath: friendState
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8666803960108073236, guid: dc970bc045a563248889eee57a8dc810, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 639774778269103830, guid: dc970bc045a563248889eee57a8dc810, type: 3}
+    - {fileID: 7576617029151073128, guid: dc970bc045a563248889eee57a8dc810, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2111817916861679428, guid: dc970bc045a563248889eee57a8dc810, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2536378497706357477}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 821298877341590097, guid: dc970bc045a563248889eee57a8dc810, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5611802320796636372}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc970bc045a563248889eee57a8dc810, type: 3}
 --- !u!4 &4869232486160084752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2111817916861679428, guid: dc970bc045a563248889eee57a8dc810, type: 3}
   m_PrefabInstance: {fileID: 6835428567518914644}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6177114509721389573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 821298877341590097, guid: dc970bc045a563248889eee57a8dc810, type: 3}
-  m_PrefabInstance: {fileID: 6835428567518914644}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5611802320796636372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6177114509721389573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c18fb5f82ae9af428095e2bb85660fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  friendState: 0
-  friendName: 

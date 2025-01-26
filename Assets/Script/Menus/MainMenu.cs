@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,8 @@ public class MainMenu : MonoBehaviour
                 initialPositions[i] = rt.anchoredPosition;
             }
         }
+
+        InputManager.Instance.OnPlayerTwoJoined += PlayGame2P;
     }
 
     private void Update()
@@ -63,5 +66,10 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.OnPlayerTwoJoined -= PlayGame2P;
     }
 }

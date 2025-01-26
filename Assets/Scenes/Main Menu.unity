@@ -965,7 +965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2 Players
+  m_text: "2 Players \n(Press A)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52d1e526aae8b3449bad513d00dde338, type: 2}
   m_sharedMaterial: {fileID: 7035135475968028664, guid: 52d1e526aae8b3449bad513d00dde338, type: 2}
@@ -1337,6 +1337,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2461697148246564419, guid: 8eb426ec3eaf86a449d7b93a8b50519f, type: 3}
   m_PrefabInstance: {fileID: 1414387244}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1483557368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 926098265967876627, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_Name
+      value: Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878638730581334578, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 95014469e3af17648bdc2a96c7f40be5, type: 3}
 --- !u!1 &1538562967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +1968,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.49803922, g: 1, b: 0.67058825, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1925,23 +1982,11 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2001201756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1538562971}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayGame2P
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2001201756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2554,3 +2599,4 @@ SceneRoots:
   - {fileID: 858150213}
   - {fileID: 253000706}
   - {fileID: 761025273}
+  - {fileID: 1483557368}

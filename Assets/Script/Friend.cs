@@ -39,12 +39,12 @@ public class Friend : MonoBehaviour
 	private Vector3 neutralAreaCenter;
 	private float neutralAreaRadius = 10f;
 	private float moveSpeed = 2f;
-	private float bubbleFloatSpeed = 2f;
-	private float bubbleSinAmplitude = 0.5f;
+	private float bubbleFloatSpeed = 0.5f;
+	private float bubbleSinAmplitude = 2f;
 	private float bubbleSinFrequency = 2f;
     private float transitionSpeed = 1.5f;
-	private float minBubbleFloatingHeight = 10f;
-	private float maxBubbleFloatingHeight = 20f;
+	private float minBubbleFloatingHeight = 3f;
+	private float maxBubbleFloatingHeight = 10f;
 
 
     private void Awake()
@@ -52,7 +52,7 @@ public class Friend : MonoBehaviour
 		friendName = funnyNames[Random.Range(0, funnyNames.Length)];
         friendState = Random.Range(0, 2) == 0 ? FriendState.Grounded : FriendState.Bubble;
 
-		neutralAreaCenter = transform.position;
+		neutralAreaCenter = transform.parent.position;
 	}
 
 	private void Update()
@@ -60,14 +60,14 @@ public class Friend : MonoBehaviour
         ApplyOrRemoveBubble();
 
 
-        if (friendState == FriendState.Bubble && transform.position.y < minBubbleFloatingHeight)
+        if (friendState == FriendState.Bubble && transform.parent.position.y < minBubbleFloatingHeight)
         {
             StartCoroutine(TransitionToHeight(Random.Range(minBubbleFloatingHeight, maxBubbleFloatingHeight)));
         }
 
-        if (friendState == FriendState.Grounded && transform.position.y > 1f)
+        if (friendState == FriendState.Grounded && transform.parent.position.y > 0f)
         {
-            StartCoroutine(TransitionToHeight(1f));
+            StartCoroutine(TransitionToHeight(0f));
         }
 
         if (friendState == FriendState.Bubble)
@@ -105,18 +105,18 @@ public class Friend : MonoBehaviour
 
 	private void MoveInBubble()
 	{
-		Vector3 newPosition = transform.position;
+		Vector3 newPosition = transform.parent.position;
 		newPosition.y += Mathf.Sin(Time.time * bubbleSinFrequency) * bubbleSinAmplitude * Time.deltaTime;
-		newPosition.x += bubbleFloatSpeed * Time.deltaTime;
-		transform.position = newPosition;
+		//newPosition.x += bubbleFloatSpeed * Time.deltaTime;
+		transform.parent.position = newPosition;
 	}
 
 	private System.Collections.IEnumerator MoveTo(Vector3 targetPosition)
 	{
 		_isMoving = true;
-		while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+		while (Vector3.Distance(transform.parent.position, targetPosition) > 0.1f)
 		{
-			transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+			transform.parent.position = Vector3.MoveTowards(transform.parent.position, targetPosition, moveSpeed * Time.deltaTime);
 			yield return null;
 		}
 		_isMoving = false;
@@ -140,7 +140,7 @@ public class Friend : MonoBehaviour
         PlayerType enemyTeam = friendTeam == PlayerType.PlayerOne ? PlayerType.PlayerTwo : PlayerType.PlayerOne;
         GameObject enemy = GameResources.Instance.GetPlayer(enemyTeam);
 
-        if (Vector3.Distance(transform.position, enemy.transform.position) < neutralAreaRadius)
+        if (Vector3.Distance(transform.parent.position, enemy.transform.parent.position) < neutralAreaRadius)
         {
             enemyPlayer = enemy;
             return true;
@@ -151,8 +151,8 @@ public class Friend : MonoBehaviour
 
     private void RunAway(GameObject enemyPlayer)
     {
-        Vector3 runDirection = (transform.position - enemyPlayer.transform.position).normalized;
-        Vector3 targetPosition = transform.position + runDirection * neutralAreaRadius;
+        Vector3 runDirection = (transform.parent.position - enemyPlayer.transform.parent.position).normalized;
+        Vector3 targetPosition = transform.parent.position + runDirection * neutralAreaRadius;
 
         StopAllCoroutines();
         StartCoroutine(MoveTo(targetPosition));
@@ -162,13 +162,19 @@ public class Friend : MonoBehaviour
     private System.Collections.IEnumerator TransitionToHeight(float targetHeight)
     {
         
-        Vector3 targetPosition = new Vector3(transform.position.x, targetHeight, transform.position.z);
+        Vector3 targetPosition = new Vector3(transform.parent.position.x, targetHeight, transform.parent.position.z);
 
-        while (Mathf.Abs(transform.position.y - targetHeight) > 0.1f)
+        while (Mathf.Abs(transform.parent.position.y - targetHeight) > 0.1f)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, transitionSpeed * Time.deltaTime);
+            transform.parent.position = Vector3.Lerp(transform.parent.position, targetPosition, transitionSpeed * Time.deltaTime);
             yield return null;
         }
+
+		if(friendState == FriendState.Grounded)
+		{
+			transform.parent.position = targetPosition;
+			Destroy(this);
+		}
     }
 
 	private void ApplyOrRemoveBubble()

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     public event Action OnSchizoPressed;
+    public event Action OnPlayerTwoJoined;
     
     public static InputManager Instance { get; private set; }
 
@@ -14,6 +15,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector] public StarterAssetsInputs StarterAssetsInputsPlayerTwo;
     [HideInInspector] public PlayerInput PlayerInputPlayerOne;
     [HideInInspector] public PlayerInput PlayerInputPlayerTwo;
+    [HideInInspector] public bool PlayerTwoJoined;
 
     [SerializeField] private PlayerInput _playerTwoInput;
     
@@ -27,7 +29,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
         
         PlayerInputPlayerOne = GetComponent<PlayerInput>();
         StarterAssetsInputsPlayerOne = GetComponent<StarterAssetsInputs>();
@@ -52,6 +54,7 @@ public class InputManager : MonoBehaviour
         else
         {
             _playerTwoInput.enabled = true;
+            PlayerTwoJoined = true;
         }
 
         ++_numberOfPlayers;

@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class GameResources : MonoBehaviour
 {
-    public static GameResources Instance
-    {
-        get
-        {
-            _instance ??= Instance;
-            return _instance;
-        }
-    }
+    public static GameResources Instance { get; private set; }
 
-    private static GameResources _instance;
-    
     [SerializeField] private GameObject PlayerOne;
     [SerializeField] private GameObject PlayerTwo;
+
+    private void Awake()
+    {
+        if(Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public GameObject GetPlayer(PlayerType playerType)
     {
@@ -25,6 +27,6 @@ public class GameResources : MonoBehaviour
     private void OnDestroy()
     {
         GameData.Instance.Reset();
-        _instance = null;
+        Instance = null;
     }
 }

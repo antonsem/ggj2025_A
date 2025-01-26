@@ -211,6 +211,7 @@ MonoBehaviour:
   _spreadAngle: 0.1
   _timeBetweenProjectiles: 0.1
   _bubblesPool: {fileID: 0}
+  _isPlayerOne: 0
 --- !u!114 &2468688908623080549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,10 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0748aeae786d5d40bd97f50434f14c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseBubbleIncrement: 1
   animationLengthSeconds: 0.3
   fastPressBonusSeconds: 1
   maxTimeHoldingBubblesSeconds: 2
   bubbleDecayOvertime: 0.01
   releaseForceMultiplier: 10
-  fastPressBonusMultiplier: 1
+  _isPlayerOne: 0
+  gameUI: {fileID: 0}
