@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameResources : MonoBehaviour
@@ -19,5 +20,11 @@ public class GameResources : MonoBehaviour
     public GameObject GetPlayer(PlayerType playerType)
     {
         return playerType == PlayerType.PlayerTwo ? PlayerTwo : PlayerOne;
+    }
+
+    private void OnDestroy()
+    {
+        GameData.Instance.Reset();
+        _instance = null;
     }
 }

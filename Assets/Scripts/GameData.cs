@@ -68,4 +68,10 @@ public class GameData
             _ => false
         };
     }
+
+    public void Reset()
+    {
+        PlayerOneFriends.Clear();
+        PlayerTwoFriends.Clear();
+    }
 }

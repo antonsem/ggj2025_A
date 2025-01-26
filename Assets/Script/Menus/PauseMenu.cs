@@ -71,11 +71,21 @@ public class PauseMenu : MonoBehaviour
 
     public void ToMainMenu()
     {
+        Resume();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         SceneManager.LoadSceneAsync(0);
     }
 
     public void BackToMainMenu()
     {
+        Resume();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         SceneManager.LoadSceneAsync(0);
     }
 }

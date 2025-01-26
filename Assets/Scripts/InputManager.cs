@@ -27,6 +27,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         Instance = this;
+        DontDestroyOnLoad(this);
         
         PlayerInputPlayerOne = GetComponent<PlayerInput>();
         StarterAssetsInputsPlayerOne = GetComponent<StarterAssetsInputs>();
