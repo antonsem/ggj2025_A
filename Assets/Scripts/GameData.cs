@@ -17,7 +17,7 @@ public class GameData
     
     private static readonly int _baseMap = Shader.PropertyToID("_BaseMap");
 
-    public const int TotalFriends = 18;
+    public const int TotalFriends = 10;
 
     public event Action<PlayerType> OnGameWon;
     public event Action<PlayerType, int> OnScoreUpdated;
