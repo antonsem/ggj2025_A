@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 using FMOD.Studio;
 using StarterAssets;
 using UnityEngine;
@@ -6,21 +7,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Bubble Settings")]
-    [SerializeField] public float baseBubbleIncrement = 0.1f;
+
+    
     [SerializeField] public float animationLengthSeconds = 0.3f;
     [SerializeField] private float fastPressBonusSeconds = 1f;
     [SerializeField] public float maxTimeHoldingBubblesSeconds = 2f;
     [SerializeField] public float bubbleDecayOvertime = 0.01f;
-    [SerializeField] public float releaseForceMultiplier = 10f;
+    [SerializeField] public GameUI gameUI;
 
     // Current bubble count
     private float _currentBubbles = 0f;
 
     private float _lastShakeTime = 0f;
-    [SerializeField][Range(1f,2f)] public float fastPressBonusMultiplier = 1.1f;
 
     private bool _isBubbling = false;
 
+    private float releaseForceMultiplier = 15f;
+    private float baseBubbleIncrement = 0.2f;
+    
     private CharacterController _controller;
     private StarterAssetsInputs _input;
     private ThirdPersonController _thirdPersonController;
@@ -42,11 +46,11 @@ public class PlayerController : MonoBehaviour
             ShakeJetpack();
         }
 
-        // If it has been too long since last press of jetpackShake -> release bubbles
         if (_isBubbling && Time.time - _lastShakeTime > maxTimeHoldingBubblesSeconds)
         {
             _currentBubbles -= maxTimeHoldingBubblesSeconds;
-            Debug.Log($"current bubbles reduced: {_currentBubbles}"); // Tsssss sound
+
+            if (_currentBubbles < 0f) { _currentBubbles = 0; }
         }
 
         if (_input.jetpackRelease)
@@ -60,27 +64,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // shaking sound
-    private void ShakeJetpack() 
+    private void ShakeJetpack()
     {
         float timeSinceLastPress = Time.time - _lastShakeTime;
 
-        if (timeSinceLastPress >= animationLengthSeconds && timeSinceLastPress <= (animationLengthSeconds + fastPressBonusSeconds))
-        {
-            _currentBubbles += baseBubbleIncrement * fastPressBonusMultiplier;
-        }
-        else
+        if (_currentBubbles > 1f) { return;}
+
+        if (timeSinceLastPress >= animationLengthSeconds)
         {
             _currentBubbles += baseBubbleIncrement;
+
+            gameUI.UpdateBubbleCounter(_currentBubbles);
+
+            _isBubbling = true;
+            _lastShakeTime = Time.time;
+
+            FMODManager.Instance.PlaySound("event:/SFX_Shake");
         }
 
-        _isBubbling = true;
-        _lastShakeTime = Time.time;
-
-
-        FMODManager.Instance.PlaySound("event:/SFX_Shake");
-
-        Debug.Log($"Shaking - current bubbles: {_currentBubbles}");
     }
 
     // Champagne pop?
@@ -90,12 +91,12 @@ public class PlayerController : MonoBehaviour
 
         _thirdPersonController.SetVerticalVelocity(bubbleForce);
 
-        Debug.Log($"{_currentBubbles} released with bubbleForce: {bubbleForce}");
-
         _currentBubbles = 0f;
         _isBubbling = false;
 
         FMODManager.Instance.PlaySound("event:/SFX_Pop");
         _startedShaking = false;
+
+        gameUI.UpdateBubbleCounter(_currentBubbles);
     }
 }

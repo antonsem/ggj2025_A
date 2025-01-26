@@ -47,18 +47,21 @@ public class MainMenu : MonoBehaviour
     public void PlayGame1P()
     {
         FMODManager.Instance.PlaySound("event:/MX_MainTheme");
+        GameModeManager.Instance.SetSinglePlayer();
+
         SceneManager.LoadSceneAsync(1);
     }
 
     public void PlayGame2P()
     {
-        // Same scene as 1P or 2P Scene?
+        FMODManager.Instance.PlaySound("event:/MX_MainTheme");
+        GameModeManager.Instance.SetMultiplayer();
+        
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
-
-
 }
