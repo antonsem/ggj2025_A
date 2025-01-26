@@ -120,8 +120,8 @@ Material:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _EnvironmentReflections: 1
-    - _Frensel_Power: 5.6
-    - _Frensel_Power_1: 0.6
+    - _Frensel_Power: 5.2
+    - _Frensel_Power_1: 2.6
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -132,7 +132,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 50
     - _ReceiveShadows: 1
-    - _Roughness: 0.734
+    - _Roughness: 0.496
     - _Smoothness: 0.658
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
