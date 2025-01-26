@@ -14,6 +14,7 @@ public class GameUI : MonoBehaviour
 
     [Header("Bubble Bar")]
     [SerializeField] private Slider bubbleSlider;
+    [SerializeField] private TMP_Text keysText;
 
     [Header("Player Selection")]
     [SerializeField] private PlayerType playerType;
@@ -38,12 +39,22 @@ public class GameUI : MonoBehaviour
 
     private void Awake()
     {
-        bubbleSlider.value = 0;
+
     }
 
     public void UpdateBubbleCounter(float bubbleValue)
     {
         bubbleSlider.value = bubbleValue;
+
+        if (bubbleValue > 0)
+        {
+            keysText.text = "Press [Space] to Pop Bubbles";
+        }
+        else
+        {
+            keysText.text = "Press [E] to build pressure";
+        }
+
     }
 
     private void UpdateFriendCount(PlayerType player, int friendCount)
