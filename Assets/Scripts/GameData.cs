@@ -34,6 +34,19 @@ public class GameData
                 {
                     friend.GetComponentInChildren<SkinnedMeshRenderer>().material.SetTextureOffset(_baseMap, new Vector2(0.66f,0));
                     OnScoreUpdated?.Invoke(playerType, PlayerOneFriends.Count);
+                    
+                    switch (PlayerOneFriends.Count)
+                    {
+                        case > 8:
+                            FMODManager.SetGlobalParameterString("Bass_Speed", "Bass_High");
+                            break;
+                        case < 3:
+                            FMODManager.SetGlobalParameterString("Bass_Speed", "Bass_Slow");
+                            break;
+                        default:
+                            FMODManager.SetGlobalParameterString("Bass_Speed", "Bass_Med");
+                            break;
+                    }
                 }
                 if(PlayerTwoFriends.Remove(friend))
                 {
@@ -45,6 +58,20 @@ public class GameData
                 {
                     friend.GetComponentInChildren<SkinnedMeshRenderer>().material.SetTextureOffset(_baseMap, new Vector2(0.33f, 0));
                     OnScoreUpdated?.Invoke(playerType, PlayerTwoFriends.Count);
+                    
+
+                    switch (PlayerTwoFriends.Count)
+                    {
+                        case > 8:
+                            FMODManager.SetGlobalParameterString("Drum_Speed", "Drum_High");
+                            break;
+                        case < 3:
+                            FMODManager.SetGlobalParameterString("Drum_Speed", "Drum_Low");
+                            break;
+                        default:
+                            FMODManager.SetGlobalParameterString("Drum_Speed", "Drum_Med");
+                            break;
+                    }
                 }
                 if(PlayerOneFriends.Remove(friend))
                 {

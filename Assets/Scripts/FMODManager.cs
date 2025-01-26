@@ -19,6 +19,10 @@ public class FMODManager
 	{
 		RuntimeManager.PlayOneShot(eventName);
 	}
+ public static void SetGlobalParameterString(string parameter, string value)
+    {
+        RuntimeManager.StudioSystem.setParameterByNameWithLabel(parameter, value);
+    }
 
 	public void SetGlobalParameterValue(string parameterName, int parameterValue)
 	{
