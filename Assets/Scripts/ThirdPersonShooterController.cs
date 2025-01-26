@@ -82,13 +82,13 @@ public class ThirdPersonShooterController : MonoBehaviour
 			
 			for(int i = 0; i < _additionalBubbles; i++)
 			{
-				Transform bubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation);
+				Transform bubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation, _isPlayerOne ? PlayerType.PlayerOne : PlayerType.PlayerTwo);
 				//bubble.transform.rotation = bubble.transform.rotation * Quaternion.AngleAxis((_spreadAngle / 2f) - ((i / (_additionalBubbles / 2f)) * (_spreadAngle / 2f)), Vector3.up);
 				bubble.transform.forward = PickFiringDirection(bubble.transform.forward, _spreadAngle);
 				bubble.gameObject.SetActive(true);
 			}
 
-			Transform mainBubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation);
+			Transform mainBubble = _bubblesPool.GetBubble(_spawnBubblePosition.position, mainRotation, _isPlayerOne ? PlayerType.PlayerOne : PlayerType.PlayerTwo);
 			mainBubble.gameObject.SetActive(true);
 			//_starterAssetsInputs._shoot = false;
 			_timeSinceLastProjectile = 0;

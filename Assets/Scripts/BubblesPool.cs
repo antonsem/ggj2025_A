@@ -9,13 +9,14 @@ public class BubblesPool : MonoBehaviour
     //private readonly HashSet<Transform> _activeBubbles = new();
     private readonly HashSet<Transform> _inactiveBubbles = new();
     
-    public Transform GetBubble(Vector3 position, Quaternion rotation)
+    public Transform GetBubble(Vector3 position, Quaternion rotation, PlayerType playerType)
     {
         Transform bubble = _inactiveBubbles.Count > 0 ? _inactiveBubbles.First() : Instantiate(_bubbleProjectile, transform);
         _inactiveBubbles.Remove(bubble);
         //_activeBubbles.Add(bubble);
         bubble.SetPositionAndRotation(position, rotation);
         bubble.gameObject.SetActive(false);
+        bubble.GetComponent<BubbleProjectile>().SetPlayer(playerType);
         return bubble;
     }
 
