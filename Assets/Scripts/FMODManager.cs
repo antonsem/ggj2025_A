@@ -20,6 +20,47 @@ public class FMODManager
 		RuntimeManager.PlayOneShot(eventName);
 	}
 
+	public void SetBass(int level)
+	{
+		switch (level)
+		{
+			case 0:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Bass_Speed", "Bass_High");
+				break;
+			case 1:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Bass_Speed", "Bass_High");
+
+				break;
+			case 2:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Bass_Speed", "Bass_High");
+
+				break;
+			default: 
+				Debug.LogWarning("FMODManager::SetBass level out of range.");
+				break;
+		}
+	}
+
+	public void SetDrums(int level)
+	{
+		switch (level)
+		{
+			case 0:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Drum_Speed", "Drum_High");
+				break;
+			case 1:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Drum_Speed", "Drum_High");
+
+				break;
+			case 2:
+				RuntimeManager.StudioSystem.setParameterByNameWithLabel("Drum_Speed", "Drum_High");
+
+				break;
+			default: 
+				Debug.LogWarning("FMODManager::SetDrums level out of range.");
+				break;
+		}
+	}
 	public void SetGlobalParameterValue(string parameterName, int parameterValue)
 	{
 		RuntimeManager.StudioSystem.setParameterByName(parameterName, parameterValue);
