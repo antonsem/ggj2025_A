@@ -63,13 +63,10 @@ public class BubbleProjectile : MonoBehaviour
 			{
 				friendBubble.enabled = false; //TODO: Add particle effect
 				friendBubble.gameObject.GetComponent<SphereCollider>().radius = 0.25f;
-			}
-			else
-			{
-				GameData.Instance.UpdateScore(_playerType == PlayerType.PlayerOne ? PlayerType.PlayerTwo : PlayerType.PlayerOne, -1);
+				
 			}
 
-			GameData.Instance.UpdateScore(_playerType, 1);
+			GameData.Instance.AssignFriend(other.gameObject, _playerType);
 		}
 	}
 }

@@ -1,11 +1,10 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    public enum PlayerType { PlayerOne, PlayerTwo };
-
     [Header("UI Panels")]
     [SerializeField] private GameObject UIPanel;
 
@@ -33,6 +32,8 @@ public class GameUI : MonoBehaviour
         {
             UIPanel.SetActive(false);
         }
+
+        GameData.Instance.OnScoreUpdated += UpdateFriendCount;
     }
 
     private void Awake()
@@ -40,26 +41,17 @@ public class GameUI : MonoBehaviour
         bubbleSlider.value = 0;
     }
 
-    private void Update()
-    {
-        // TODO: Move this to game logic where friend is captured
-        UpdateFriendCount();
-    }
-
     public void UpdateBubbleCounter(float bubbleValue)
     {
         bubbleSlider.value = bubbleValue;
     }
 
-    private void UpdateFriendCount()
+    private void UpdateFriendCount(PlayerType player, int friendCount)
     {
-        friendCountText.text = GameData.Instance.PlayerOneFriends.ToString();
-        UpdateIconContainer(iconContainer, GameData.Instance.PlayerOneFriends);
-
-        if (playerType == PlayerType.PlayerTwo && GameModeManager.Instance.gameMode == GameModeManager.GameMode.MultiPlayer)
+        if(playerType == player)
         {
-            friendCountText.text = GameData.Instance.PlayerTwoFriends.ToString();
-            UpdateIconContainer(iconContainer, GameData.Instance.PlayerTwoFriends);
+            friendCountText.text = friendCount.ToString();
+            UpdateIconContainer(iconContainer, friendCount);
         }
     }
 
@@ -78,4 +70,8 @@ public class GameUI : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameData.Instance.OnScoreUpdated -= UpdateFriendCount;
+    }
 }
