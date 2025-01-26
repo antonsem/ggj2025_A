@@ -1,45 +1,72 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour
 {
-    [SerializeField] private GameObject[] iconPrefab;
+    [Header("UI Panels")]
+    [SerializeField] private GameObject UIPanel;
+
+    [Header("Friend Counter")]
     [SerializeField] private GameObject[] iconContainer;
     [SerializeField] private TMP_Text friendCountText;
 
-    [SerializeField] private GameObject player;
+    [Header("Bubble Bar")]
+    [SerializeField] private Slider bubbleSlider;
+    [SerializeField] private TMP_Text keysText;
 
-    [SerializeField] private int _friendCount = 10;
+    [Header("Player Selection")]
+    [SerializeField] private PlayerType playerType;
 
-    private void Update()
+    private void Start()
     {
-        UpdateBubbleCounter();
+        if (playerType == PlayerType.PlayerOne)
+        {
+            UIPanel.SetActive(true);
+        }
+        else if (playerType == PlayerType.PlayerTwo && GameModeManager.Instance.gameMode == GameModeManager.GameMode.MultiPlayer)
+        {
+            UIPanel.SetActive(true);
+        }
+        else
+        {
+            UIPanel.SetActive(false);
+        }
 
-        UpdateFriendCount();
-        UpdateIconContainer();
+        UpdateFriendCount(playerType, 0);
+        GameData.Instance.OnScoreUpdated += UpdateFriendCount;
+    }
 
+    public void UpdateBubbleCounter(float bubbleValue)
+    {
+        bubbleSlider.value = bubbleValue;
+
+        if (bubbleValue > 0)
+        {
+            keysText.text = "Press [Space] to Pop Bubbles";
+        }
+        else
+        {
+            keysText.text = "Press [E] to build pressure";
+        }
 
     }
 
-    private void UpdateBubbleCounter()
+    private void UpdateFriendCount(PlayerType player, int friendCount)
     {
-        // Get Bubble Counter from player controller
+        if(playerType == player)
+        {
+            friendCountText.text = friendCount.ToString();
+            UpdateIconContainer(iconContainer, friendCount);
+        }
     }
 
-    private void UpdateFriendCount()
+    private void UpdateIconContainer(GameObject[] iconContainer, int friendCount)
     {
-        // friendCount = player.friends;
-
-        friendCountText.text = _friendCount.ToString();
-    }
-
-    private void UpdateIconContainer()
-    {
-
         for (int i = 0; i < iconContainer.Length; i++)
         {
-            if (i < _friendCount)
+            if (i < friendCount)
             {
                 iconContainer[i].GetComponent<Image>().enabled = true;
             }
@@ -50,4 +77,8 @@ public class GameUI : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        GameData.Instance.OnScoreUpdated -= UpdateFriendCount;
+    }
 }

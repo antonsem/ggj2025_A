@@ -351,7 +351,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT TO MAIN MENU
+  m_text: BACK TO MAIN MENU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1009,7 +1009,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8966667340780004074}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: PauseGame
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1807,7 +1807,7 @@ RectTransform:
   m_Father: {fileID: 3942145660973463005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.74, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2470,7 +2470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 7203020615058089841}
   settings: {fileID: 0}
-  input: {fileID: 0}
   settingsPanel: {fileID: 1364615260189903472}
   musicSlider: {fileID: 1316866059123417989}
   sfxSlider: {fileID: 5639580547242899172}
@@ -2866,12 +2865,12 @@ GameObject:
   - component: {fileID: 4873265572845294664}
   - component: {fileID: 8354934979486077068}
   m_Layer: 0
-  m_Name: GameUI
+  m_Name: GameUI_SinglePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6158726060469361515
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2968,7 +2967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792a1ede2ae63c440918e7d6d20e4273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iconPrefab: []
+  UIPanel: {fileID: 0}
   iconContainer:
   - {fileID: 2049049421520027137}
   - {fileID: 7275408015836546793}
@@ -2989,8 +2988,8 @@ MonoBehaviour:
   - {fileID: 6612570436875677353}
   - {fileID: 3057106661112138288}
   friendCountText: {fileID: 8384930758647374802}
-  player: {fileID: 0}
-  _friendCount: 11
+  bubbleSlider: {fileID: 0}
+  playerType: 0
 --- !u!1001 &988285782925724472
 PrefabInstance:
   m_ObjectHideFlags: 0

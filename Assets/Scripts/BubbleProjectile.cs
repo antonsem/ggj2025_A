@@ -13,12 +13,17 @@ public class BubbleProjectile : MonoBehaviour
 	private float _elapsedTime;
 	private BubblesPool _bubblesPool;
 	private Vector3 _originalScale;
+	private int _projectileLayer;
+	private int _friendLayer;
+	private PlayerType _playerType;
 
     private void Awake()
     {
         _bubbleProjectile = GetComponent<Rigidbody>();
 		_bubblesPool = GetComponentInParent<BubblesPool>();
 		_originalScale = transform.localScale;
+		_projectileLayer = LayerMask.NameToLayer("Projectile");
+		_friendLayer = LayerMask.NameToLayer("Friend");
 	}
 
 	private void OnEnable()
@@ -38,11 +43,30 @@ public class BubbleProjectile : MonoBehaviour
 		}
 	}
 
+	public void SetPlayer(PlayerType playerType)
+	{
+		_playerType = playerType;
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		if(((1 << other.gameObject.layer) & LayerMask.NameToLayer("Projectile")) != 0)
+		if(other.gameObject.layer != _projectileLayer)
 		{
 			_bubblesPool.PopBubble(transform);
+		}
+
+		if(other.gameObject.layer == _friendLayer)
+		{
+			MeshRenderer friendBubble = other.gameObject.GetComponent<MeshRenderer>();
+			
+			if(friendBubble.enabled)
+			{
+				friendBubble.enabled = false; //TODO: Add particle effect
+				friendBubble.gameObject.GetComponent<SphereCollider>().radius = 0.25f;
+				
+			}
+
+			GameData.Instance.AssignFriend(other.gameObject, _playerType);
 		}
 	}
 }

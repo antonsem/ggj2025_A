@@ -44,16 +44,12 @@ public class InputManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput value)
     {
-        Debug.Log("HELLO");
         if(_numberOfPlayers == 0)
         {
             GetComponent<PlayerInput>().enabled = true;
         }
         else
         {
-            // _playerTwoInput.actions = GetComponent<PlayerInput>().actions;
-            // _playerTwoInput.defaultControlScheme = "Gamepad";
-            // _playerTwoInput.neverAutoSwitchControlSchemes = true;
             _playerTwoInput.enabled = true;
         }
 

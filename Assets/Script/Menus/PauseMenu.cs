@@ -73,4 +73,9 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(0);
     }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }
