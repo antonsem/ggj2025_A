@@ -50,8 +50,10 @@ public class PlayerController : MonoBehaviour
         if (_isBubbling && Time.time - _lastShakeTime > maxTimeHoldingBubblesSeconds)
         {
             _currentBubbles -= maxTimeHoldingBubblesSeconds;
-
+            
             if (_currentBubbles < 0f) { _currentBubbles = 0; }
+
+            gameUI.UpdateBubbleCounter(_currentBubbles);
         }
 
         if (_input.jetpackRelease)
