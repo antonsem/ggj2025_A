@@ -37,7 +37,13 @@ public class ThirdPersonShooterController : MonoBehaviour
 	{
 		Vector3 mouseWorldPosition = Vector3.zero;
 		
-		Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+		Vector2 screenCenterPoint = new Vector2(Screen.width / 4f, Screen.height / 4f);
+		if(!_isPlayerOne)
+		{
+			screenCenterPoint = new Vector2(screenCenterPoint.x + Screen.width / 2f, screenCenterPoint.y);
+		}
+		
+		
 		Ray ray = _camera.ScreenPointToRay(screenCenterPoint);
 		//ray.direction = Camera.main.transform.forward;
 		if(Physics.Raycast(ray, out RaycastHit raycastHit, 999f, _aimColliderLayerMask))
