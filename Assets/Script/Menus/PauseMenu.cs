@@ -1,5 +1,6 @@
 using UnityEngine;
 using StarterAssets;
+using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,21 +8,49 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject playerOneVictory;
+    [SerializeField] private GameObject playerTwoVictory;
 
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
     private bool _gameIsPaused = false;
+    private float? _gameWon;
 
     private void Awake()
     {
         musicSlider.value = PlayerPrefs.GetFloat("Music");
         sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+
+        GameData.Instance.OnGameWon += GameWon;
+    }
+
+    private void GameWon(PlayerType playerType)
+    {
+        switch(playerType)
+        {
+            case PlayerType.PlayerOne:
+                playerOneVictory.SetActive(true);
+                _gameWon = Time.time;
+                break;
+            case PlayerType.PlayerTwo:
+                playerTwoVictory.SetActive(true);
+                _gameWon = Time.time;
+                break;
+        }
     }
 
     private void Update()
     {
+        if(_gameWon.HasValue)
+        {
+            if(Time.time - _gameWon.Value > 2f)
+            {
+                BackToMainMenu();
+            }
+        }
+        
         if (AnyPlayerPaused() && !_gameIsPaused)
         {
             _gameIsPaused = true;
@@ -75,6 +104,8 @@ public class PauseMenu : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        GameData.Instance.OnGameWon -= GameWon;
         
         SceneManager.LoadSceneAsync(0);
     }
@@ -87,5 +118,10 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
         
         SceneManager.LoadSceneAsync(0);
+    }
+
+    private void OnDestroy()
+    {
+        GameData.Instance.OnGameWon -= GameWon;
     }
 }

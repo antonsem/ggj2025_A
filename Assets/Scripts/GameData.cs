@@ -17,7 +17,7 @@ public class GameData
     
     private static readonly int _baseMap = Shader.PropertyToID("_BaseMap");
 
-    public const int TotalFriends = 20; //TODO: Adjust the amount based on scene
+    public const int TotalFriends = 18;
 
     public event Action<PlayerType> OnGameWon;
     public event Action<PlayerType, int> OnScoreUpdated;
@@ -53,9 +53,13 @@ public class GameData
                 break;
         }
 
-        if(PlayerOneFriends.Count + PlayerTwoFriends.Count >= TotalFriends) //TODO: Or maybe change to number of friends bigger than a threshold?
+        if(PlayerOneFriends.Count >= TotalFriends)
         {
-            OnGameWon?.Invoke(PlayerOneFriends.Count > PlayerTwoFriends.Count ? PlayerType.PlayerOne : PlayerType.PlayerTwo);
+            OnGameWon?.Invoke(PlayerType.PlayerOne);
+        }
+        else if(PlayerTwoFriends.Count >= TotalFriends)
+        {
+            OnGameWon?.Invoke(PlayerType.PlayerTwo);
         }
     }
 
