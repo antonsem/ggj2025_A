@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         InputManager.Instance.OnSchizoPressed += OnSchizo;
     }
 
