@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
         
         PlayerInputPlayerTwo = _playerTwoInput;
         StarterAssetsInputsPlayerTwo = _playerTwoInput.GetComponent<StarterAssetsInputs>();
-        PlayerInputPlayerTwo.enabled = _numberOfPlayers >= 2;
+        PlayerInputPlayerTwo.enabled = true;
     }
 
     public void OnSchizo(InputValue value)
