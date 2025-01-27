@@ -96,7 +96,7 @@ public class ThirdPersonShooterController : MonoBehaviour
 			FMODManager.Instance.SetGlobalParameterValue("IsShooting", 1);
 			FMODManager.Instance.PlaySound("event:/SFX_Shooting");
 		}
-		else if(!_starterAssetsInputs._shoot)
+		else if(!InputManager.Instance.StarterAssetsInputsPlayerOne._shoot && !InputManager.Instance.StarterAssetsInputsPlayerTwo._shoot)
 		{
 			FMODManager.Instance.SetGlobalParameterValue("IsShooting", 0);
 		}
